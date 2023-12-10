@@ -17,7 +17,7 @@ class Board extends React.Component{
     }
     render(){
         return(
-            <div className='flex flex-col h-screen justify-start items-center'>
+            <div className='flex flex-col h-screen justify-center items-center'>
                 <div className="flex row m-0 p-0">
                     {this.renderSquare(0)}
                     {this.renderSquare(1)}
@@ -81,7 +81,7 @@ class Game extends React.Component{
             "Go to Game Start";
             return(
                 <li key={move}>
-                    <button onClick={() => this.jumpTo(move)}>{description}</button>
+                    <button className='shadow-md shadow-slate-600 padding px-10 bg-slate-200 rounded-sm m-2' onClick={() => this.jumpTo(move)}>{description}</button>
                 </li>
             )
         });
@@ -94,14 +94,14 @@ class Game extends React.Component{
             status = "Next Player : " + (this.state.isXnext ? 'X' : 'O');
         }
         return(
-            <div className="game">            
-                <div className="game-board">
+            <div className="game flex flex-column justify-evenly items-center bg-white">            
+                <div className="game-board  m-0 flex flex-column justify-around items-center">
                     <Board 
                     squares = {current.squares}
                     onClick = {(i)=>{this.handleClick(i)}}/>
                 </div>
-                <div className="game-info">
-                    <div>{status}</div>
+                <div className="game-info items-center">
+                    <div className='text-center text-2xl font-mono'>{status}</div>
                     <ol>{moves}</ol>
                 </div>
             </div>
